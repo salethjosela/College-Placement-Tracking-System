@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Application Tracking</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+padding:30px;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.search{
+padding:12px;
+width:300px;
+border:none;
+border-radius:10px;
+}
+
+.add-btn{
+padding:12px 20px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+.app-table{
+width:100%;
+border-collapse:collapse;
+background:#1e293b;
+border-radius:15px;
+overflow:hidden;
+}
+
+.app-table th{
+background:#2563eb;
+padding:15px;
+}
+
+.app-table td{
+padding:15px;
+text-align:center;
+border-bottom:1px solid #334155;
+}
+
+.status{
+padding:6px 12px;
+border-radius:20px;
+font-size:14px;
+font-weight:bold;
+}
+
+.applied{
+background:#f59e0b;
+}
+
+.technical{
+background:#8b5cf6;
+}
+
+.hr{
+background:#06b6d4;
+}
+
+.selected{
+background:#10b981;
+}
+
+.rejected{
+background:#ef4444;
+}
+
+.fulltime{
+background:#2563eb;
+}
+
+.remote{
+background:#8b5cf6;
+}
+
+.hybrid{
+background:#f59e0b;
+}
+
+.parttime{
+background:#14b8a6;
+}
+
+.action-btn{
+padding:8px 12px;
+border:none;
+border-radius:8px;
+margin:2px;
+cursor:pointer;
+color:white;
+}
+
+.view{
+background:#3b82f6;
+}
+
+.download{
+background:#10b981;
+color:white;
+text-decoration:none;
+display:inline-block;
+padding:8px 12px;
+border-radius:8px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>📄 Application Tracking System</h1>
+
+<div>
+<input type="text" class="search"
+placeholder="Search Application..."
+onkeyup="searchApplication()">
+
+<button class="add-btn" onclick="addApplication()">
++ New Application
+</button>
+
+</div>
+
+</div>
+
+<table class="app-table">
+
+<tr>
+<th>App ID</th>
+<th>Student</th>
+<th>Company</th>
+<th>Role</th>
+<th>Applied Date</th>
+<th>Current Round</th>
+<th>Interview Date</th>
+<th>Work Type</th>
+<th>Status</th>
+<th>Offer Letter</th>
+<th>Actions</th>
+</tr>
+
+<tr>
+<td>APP001</td>
+<td>Arun</td>
+<td>TCS</td>
+<td>Software Engineer</td>
+<td>01-07-2026</td>
+<td>Technical Round</td>
+<td>10-07-2026</td>
+<td><span class="status fulltime">Full Time</span></td>
+<td><span class="status technical">Technical</span></td>
+<td>Pending</td>
+<td>
+<button class="action-btn view"
+onclick="viewApplication('APP001','Arun','TCS','Software Engineer')">
+View
+</button>
+</td>
+</tr>
+
+<tr>
+<td>APP002</td>
+<td>Priya</td>
+<td>Infosys</td>
+<td>System Engineer</td>
+<td>02-07-2026</td>
+<td>Completed</td>
+<td>12-07-2026</td>
+<td><span class="status hybrid">Hybrid</span></td>
+<td><span class="status selected">Selected</span></td>
+<td>
+<a href="infosys.pdf" target="_blank" class="action-btn download">
+Download
+</a>
+</td>
+<td>
+<button class="action-btn view"
+onclick="viewApplication('APP002','Priya','Infosys','System Engineer')">
+View
+</button>
+</td>
+</tr>
+
+<tr>
+<td>APP003</td>
+<td>John</td>
+<td>Wipro</td>
+<td>Project Engineer</td>
+<td>03-07-2026</td>
+<td>HR Round</td>
+<td>14-07-2026</td>
+<td><span class="status remote">Remote</span></td>
+<td><span class="status hr">HR Round</span></td>
+<td>Pending</td>
+<td>
+<button class="action-btn view">View</button>
+</td>
+</tr>
+
+<tr>
+<td>APP004</td>
+<td>Sneha</td>
+<td>Zoho</td>
+<td>Full Stack Developer</td>
+<td>04-07-2026</td>
+<td>Completed</td>
+<td>15-07-2026</td>
+<td><span class="status remote">Remote</span></td>
+<td><span class="status selected">Selected</span></td>
+<td>
+<a href="zoho.pdf" target="_blank" class="action-btn download">
+Download
+</a>
+</td>
+<td>
+<button class="action-btn view"
+onclick="viewApplication('APP004','Sneha','Zoho','Full Stack Developer')">
+View
+</button>
+</td>
+</tr>
+
+<tr>
+<td>APP005</td>
+<td>Vignesh</td>
+<td>Accenture</td>
+<td>Associate Engineer</td>
+<td>05-07-2026</td>
+<td>Completed</td>
+<td>16-07-2026</td>
+<td><span class="status parttime">Part Time</span></td>
+<td><span class="status rejected">Rejected</span></td>
+<td>Not Available</td>
+<td>
+<button class="action-btn view">View</button>
+</td>
+</tr>
+
+</table>
+<script>
+
+function viewApplication(appId, student, company, role){
+
+alert(
+"Application ID : " + appId +
+"\nStudent : " + student +
+"\nCompany : " + company +
+"\nRole : " + role
+);
+
+}
+
+function downloadOffer(student){
+
+alert(
+"Offer Letter Downloaded for " + student
+);
+
+}
+function searchApplication(){
+
+let input =
+document.querySelector(".search").value.toLowerCase();
+
+let rows =
+document.querySelectorAll(".app-table tr");
+
+for(let i = 1; i < rows.length; i++){
+
+let text =
+rows[i].innerText.toLowerCase();
+
+if(text.includes(input)){
+rows[i].style.display = "";
+}
+else{
+rows[i].style.display = "none";
+}
+
+}
+
+}
+function addApplication(){
+
+alert("New Application Added Successfully!");
+
+}
+function addApplication(){
+
+let student = prompt("Enter Student Name");
+let company = prompt("Enter Company Name");
+let role = prompt("Enter Role");
+
+if(student == "" || company == "" || role == ""){
+return;
+}
+
+let table = document.querySelector(".app-table");
+
+let row = table.insertRow(-1);
+
+row.innerHTML = `
+<td>APP00${table.rows.length}</td>
+<td>${student}</td>
+<td>${company}</td>
+<td>${role}</td>
+<td>05-07-2026</td>
+<td>Applied</td>
+<td>Pending</td>
+<td><span class="status fulltime">Full Time</span></td>
+<td><span class="status applied">Applied</span></td>
+<td>Pending</td>
+<td><button class="action-btn view">View</button></td>
+`;
+
+}
+</script>
+</body>
+</html>

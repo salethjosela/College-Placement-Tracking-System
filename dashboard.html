@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Placement Dashboard</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+display:flex;
+background:#0f172a;
+color:white;
+}
+
+.sidebar{
+width:260px;
+height:100vh;
+background:#111827;
+padding:25px;
+}
+
+.sidebar h2{
+color:#60a5fa;
+margin-bottom:30px;
+}
+
+.sidebar ul{
+list-style:none;
+}
+
+.sidebar li{
+padding:15px;
+margin-bottom:10px;
+border-radius:10px;
+background:#1f2937;
+cursor:pointer;
+}
+
+.sidebar li:hover{
+background:#2563eb;
+}
+
+.sidebar a{
+color:white;
+text-decoration:none;
+}
+
+.main{
+flex:1;
+padding:25px;
+}
+
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+}
+
+.search{
+width:300px;
+padding:12px;
+border:none;
+border-radius:10px;
+}
+
+.profile{
+background:#2563eb;
+padding:10px 20px;
+border-radius:30px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+}
+
+.card{
+padding:25px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+background:rgba(255,255,255,0.08);
+box-shadow:0 8px 25px rgba(0,0,0,0.3);
+}
+
+.card h2{
+font-size:35px;
+margin-bottom:10px;
+}
+
+.blue{
+background:linear-gradient(135deg,#2563eb,#60a5fa);
+}
+
+.green{
+background:linear-gradient(135deg,#059669,#34d399);
+}
+
+.orange{
+background:linear-gradient(135deg,#ea580c,#fb923c);
+}
+
+.purple{
+background:linear-gradient(135deg,#7c3aed,#a78bfa);
+}
+
+.activity{
+margin-top:30px;
+background:#1e293b;
+padding:20px;
+border-radius:20px;
+}
+
+.activity h3{
+margin-bottom:15px;
+}
+
+.activity p{
+padding:10px;
+border-bottom:1px solid #334155;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<h2>🚀 Placement AI</h2>
+
+<ul>
+<li><a href="dashboard.html">📊 Dashboard</a></li>
+<li><a href="students.html">👨‍🎓 Students</a></li>
+<li><a href="companies.html">🏢 Companies</a></li>
+<li><a href="drives.html">📅 Drives</a></li>
+<li><a href="applications.html">📄 Applications</a></li>
+<li><a href="reports.html">📈 Reports</a></li>
+<li><a href="notifications.html">🔔 Notifications</a></li>
+<li><a href="index.html">🚪 Logout</a></li>
+<li><a href="resume.html">📄 Resume Management</a></li>
+</ul>
+
+</div>
+
+<div class="main">
+
+<div class="topbar">
+
+<input class="search"
+placeholder="Search Students..."
+onclick="window.location.href='students.html'">
+
+<div class="profile">
+👤 Admin
+</div>
+
+</div>
+
+<div class="cards">
+
+<div class="card blue">
+<h2>250</h2>
+<p>Total Students</p>
+</div>
+
+<div class="card green">
+<h2>150</h2>
+<p>Placed Students</p>
+</div>
+
+<div class="card orange">
+<h2>25</h2>
+<p>Companies</p>
+</div>
+
+<div class="card purple">
+<h2>92%</h2>
+<p>Placement Rate</p>
+</div>
+
+</div>
+
+<div class="activity">
+
+<h3>🔥 Recent Activities</h3>
+
+<p>✅ TCS shortlisted 35 students</p>
+
+<p>✅ Infosys drive scheduled for July 15</p>
+
+<p>✅ 12 students uploaded resumes</p>
+
+<p>✅ New company Zoho registered</p>
+
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Resume Management</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+padding:30px;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.search{
+padding:12px;
+width:300px;
+border:none;
+border-radius:10px;
+}
+
+.upload-btn{
+padding:12px 20px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+.resume-table{
+width:100%;
+border-collapse:collapse;
+background:#1e293b;
+border-radius:15px;
+overflow:hidden;
+}
+
+.resume-table th{
+background:#2563eb;
+padding:15px;
+}
+
+.resume-table td{
+padding:15px;
+text-align:center;
+border-bottom:1px solid #334155;
+}
+
+.status{
+padding:6px 12px;
+border-radius:20px;
+font-size:14px;
+font-weight:bold;
+}
+
+.verified{
+background:#10b981;
+}
+
+.pending{
+background:#f59e0b;
+}
+
+.action-btn{
+padding:8px 12px;
+border:none;
+border-radius:8px;
+margin:2px;
+cursor:pointer;
+color:white;
+}
+
+.view{
+background:#3b82f6;
+}
+
+.download{
+background:#10b981;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>📄 Resume Management</h1>
+
+<div>
+<input type="text" class="search"
+placeholder="Search Student..."
+onkeyup="searchResume()">
+<input type="file" id="resumeFile" accept=".pdf,.doc,.docx">
+
+<input type="file" id="resumeFile" accept=".pdf,.doc,.docx">
+
+<button class="upload-btn" onclick="uploadResume()">
+⬆ Upload Resume
+</button>
+<button class="upload-btn" onclick="analyzeResume()">
+🤖 AI Analyze
+</button>
+</div>
+
+</div>
+
+<table class="resume-table">
+
+<tr>
+<th>Reg No</th>
+<th>Student Name</th>
+<th>Department</th>
+<th>Skills</th>
+<th>Resume Score</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+
+<tr>
+<td>22CSE001</td>
+<td>Arun</td>
+<td>CSE</td>
+<td>Java, SQL</td>
+<td>85/100</td>
+<td><span class="status verified">Verified</span></td>
+<td>
+<button class="action-btn view">View</button>
+<button class="action-btn download">Download</button>
+</td>
+</tr>
+
+<tr>
+<td>22CSE002</td>
+<td>Priya</td>
+<td>IT</td>
+<td>Python, AI</td>
+<td>92/100</td>
+<td><span class="status verified">Verified</span></td>
+<td>
+<button class="action-btn view">View</button>
+<button class="action-btn download">Download</button>
+</td>
+</tr>
+
+<tr>
+<td>22CSE003</td>
+<td>John</td>
+<td>CSE</td>
+<td>React, NodeJS</td>
+<td>78/100</td>
+<td><span class="status pending">Pending</span></td>
+<td>
+<button class="action-btn view">View</button>
+<button class="action-btn download">Download</button>
+</td>
+</tr>
+
+<tr>
+<td>22CSE004</td>
+<td>Sneha</td>
+<td>AIML</td>
+<td>Machine Learning</td>
+<td>88/100</td>
+<td><span class="status verified">Verified</span></td>
+<td>
+<button class="action-btn view">View</button>
+<button class="action-btn download">Download</button>
+</td>
+</tr>
+
+<tr>
+<td>22CSE005</td>
+<td>Vignesh</td>
+<td>ECE</td>
+<td>Embedded Systems</td>
+<td>74/100</td>
+<td><span class="status pending">Pending</span></td>
+<td>
+<button class="action-btn view">View</button>
+<button class="action-btn download">Download</button>
+</td>
+</tr>
+
+</table>
+<script>
+
+function searchResume(){
+
+let input =
+document.querySelector(".search").value.toLowerCase();
+
+let rows =
+document.querySelectorAll(".resume-table tr");
+
+for(let i = 1; i < rows.length; i++){
+
+let text =
+rows[i].innerText.toLowerCase();
+
+if(text.includes(input)){
+rows[i].style.display = "";
+}
+else{
+rows[i].style.display = "none";
+}
+
+}
+
+}
+
+function uploadResume(){
+
+let file =
+document.getElementById("resumeFile").files[0];
+
+if(!file){
+alert("Please Select a Resume");
+return;
+}
+
+alert(
+file.name + " Uploaded Successfully"
+);
+
+}
+function analyzeResume(){
+
+alert(
+"AI Resume Analysis\n\n" +
+"Strengths:\n" +
+"✔ Technical Skills\n" +
+"✔ Communication\n" +
+"✔ Problem Solving\n\n" +
+"Suggestions:\n" +
+"✔ Add More Projects\n" +
+"✔ Add Internship Experience\n\n" +
+"Resume Score: 85/100"
+);
+
+}
+</script>
+</body>
+</html>

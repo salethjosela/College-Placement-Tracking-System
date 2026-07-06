@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Drive Management</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+padding:30px;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.search{
+padding:12px;
+width:300px;
+border:none;
+border-radius:10px;
+}
+
+.add-btn{
+padding:12px 20px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+.drive-table{
+width:100%;
+border-collapse:collapse;
+background:#1e293b;
+border-radius:15px;
+overflow:hidden;
+}
+
+.drive-table th{
+background:#2563eb;
+padding:15px;
+}
+
+.drive-table td{
+padding:15px;
+text-align:center;
+border-bottom:1px solid #334155;
+}
+
+.status{
+padding:6px 12px;
+border-radius:20px;
+font-size:14px;
+font-weight:bold;
+}
+
+.upcoming{
+background:#10b981;
+}
+
+.ongoing{
+background:#f59e0b;
+}
+
+.completed{
+background:#ef4444;
+}
+
+.online{
+background:#8b5cf6;
+}
+
+.offline{
+background:#2563eb;
+}
+
+.action-btn{
+padding:8px 12px;
+border:none;
+border-radius:8px;
+margin:2px;
+cursor:pointer;
+color:white;
+}
+
+.view{
+background:#3b82f6;
+}
+
+.register{
+background:#10b981;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>📅 Placement Drive Management</h1>
+
+<div>
+<input type="text" class="search"
+placeholder="Search Drive..."
+onkeyup="searchDrive()">
+<button class="add-btn" onclick="addDrive()">
++ Add Drive
+</button>
+</div>
+
+</div>
+
+<table class="drive-table">
+
+<tr>
+<th>Drive ID</th>
+<th>Company</th>
+<th>Role</th>
+<th>Date</th>
+<th>Venue</th>
+<th>Mode</th>
+<th>Students</th>
+<th>Selection Process</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+
+<tr>
+<td>101</td>
+<td>TCS</td>
+<td>Software Engineer</td>
+<td>20-07-2026</td>
+<td>Seminar Hall A</td>
+<td><span class="status offline">Offline</span></td>
+<td>120</td>
+<td>Aptitude → Technical → HR</td>
+<td><span class="status upcoming">Upcoming</span></td>
+<td>
+<button class="action-btn view"
+onclick="viewDrive('101','TCS','Software Engineer','20-07-2026')">
+View
+</button>
+<button class="action-btn register"
+onclick="registerDrive('TCS')">
+Register
+</button>
+</td>
+</tr>
+
+<tr>
+<td>102</td>
+<td>Infosys</td>
+<td>System Engineer</td>
+<td>25-07-2026</td>
+<td>Placement Cell</td>
+<td><span class="status offline">Offline</span></td>
+<td>95</td>
+<td>Aptitude → HR</td>
+<td><span class="status ongoing">Ongoing</span></td>
+<td>
+<button class="action-btn view"
+onclick="viewDrive('102','Infosys','System Engineer','25-07-2026')">
+View
+</button>
+<button class="action-btn register"
+onclick="registerDrive('Infosys')">
+Register
+</button>
+</td>
+</tr>
+
+<tr>
+<td>103</td>
+<td>Zoho</td>
+<td>Full Stack Developer</td>
+<td>28-07-2026</td>
+<td>Google Meet</td>
+<td><span class="status online">Online</span></td>
+<td>75</td>
+<td>Coding → Technical → HR</td>
+<td><span class="status upcoming">Upcoming</span></td>
+<td>
+<button class="action-btn view"
+onclick="viewDrive('103','Zoho','Full Stack Developer','28-07-2026')">
+View
+</button>
+<button class="action-btn register"
+onclick="registerDrive('Zoho')">
+Register
+</button>
+</td>
+</tr>
+
+<tr>
+<td>104</td>
+<td>Accenture</td>
+<td>Associate Engineer</td>
+<td>15-07-2026</td>
+<td>Main Auditorium</td>
+<td><span class="status offline">Offline</span></td>
+<td>150</td>
+<td>Aptitude → Technical → HR</td>
+<td><span class="status completed">Completed</span></td>
+<td>
+<button class="action-btn view"
+onclick="viewDrive('104','Accenture','Associate Engineer','15-07-2026')">
+View
+</button>
+</td>
+</tr>
+
+<tr>
+<td>105</td>
+<td>Cognizant</td>
+<td>Programmer Analyst</td>
+<td>05-08-2026</td>
+<td>Microsoft Teams</td>
+<td><span class="status online">Online</span></td>
+<td>80</td>
+<td>Coding → Technical → HR</td>
+<td><span class="status upcoming">Upcoming</span></td>
+<td>
+<button class="action-btn view"
+onclick="viewDrive('105','Cognizant','Programmer Analyst','05-08-2026')">
+View
+</button>
+<button class="action-btn register"
+onclick="registerDrive('Cognizant')">
+Register
+</button>
+</td>
+</tr>
+<script>
+
+function viewDrive(id, company, role, date){
+
+alert(
+"Drive ID : " + id +
+"\nCompany : " + company +
+"\nRole : " + role +
+"\nDate : " + date
+);
+
+}
+function registerDrive(company){
+
+let student = prompt("Enter Student Name");
+
+if(student == null || student == ""){
+return;
+}
+
+alert(
+student + " Registered Successfully for " + company + " Drive"
+);
+
+}
+function searchDrive(){
+
+let input =
+document.querySelector(".search").value.toLowerCase();
+
+let rows =
+document.querySelectorAll(".drive-table tr");
+
+for(let i = 1; i < rows.length; i++){
+
+let text =
+rows[i].innerText.toLowerCase();
+
+if(text.includes(input)){
+rows[i].style.display = "";
+}
+else{
+rows[i].style.display = "none";
+}
+
+}
+
+}
+function addDrive(){
+
+let company = prompt("Enter Company Name");
+let role = prompt("Enter Role");
+let date = prompt("Enter Drive Date");
+
+if(company == "" || role == "" || date == ""){
+return;
+}
+
+let table = document.querySelector(".drive-table");
+
+let row = table.insertRow(-1);
+
+row.innerHTML = `
+<td>${100 + table.rows.length}</td>
+<td>${company}</td>
+<td>${role}</td>
+<td>${date}</td>
+<td>Placement Cell</td>
+<td><span class="status offline">Offline</span></td>
+<td>0</td>
+<td>Aptitude → Technical → HR</td>
+<td><span class="status upcoming">Upcoming</span></td>
+<td>
+<button class="action-btn view">View</button>
+<button class="action-btn register">Register</button>
+</td>
+`;
+
+}
+</script>
+</table>
+
+</body>
+</html>

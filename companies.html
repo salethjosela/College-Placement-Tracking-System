@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Company Management</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+padding:30px;
+overflow-x:auto;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+flex-wrap:wrap;
+gap:15px;
+}
+
+.search{
+padding:12px;
+width:300px;
+border:none;
+border-radius:10px;
+}
+
+.add-btn{
+padding:12px 20px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+.company-table{
+width:100%;
+border-collapse:collapse;
+background:#1e293b;
+border-radius:15px;
+overflow:hidden;
+}
+
+.company-table th{
+background:#2563eb;
+padding:15px;
+}
+
+.company-table td{
+padding:15px;
+text-align:center;
+border-bottom:1px solid #334155;
+}
+
+.status{
+padding:6px 12px;
+border-radius:20px;
+font-size:14px;
+font-weight:bold;
+}
+
+.open{
+background:#10b981;
+}
+
+.closed{
+background:#ef4444;
+}
+
+.remote{
+background:#8b5cf6;
+}
+
+.hybrid{
+background:#f59e0b;
+}
+
+.fulltime{
+background:#2563eb;
+}
+
+.action-btn{
+padding:8px 12px;
+border:none;
+border-radius:8px;
+margin:2px;
+cursor:pointer;
+color:white;
+}
+
+.edit{
+background:#3b82f6;
+color:white;
+}
+
+.view{
+background:#10b981;
+color:white;
+}
+
+.delete{
+background:#ef4444;
+color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>🏢 Company & Vacancy Management</h1>
+
+<div>
+
+<input type="text"
+class="search"
+id="searchCompany"
+onkeyup="searchCompany()"
+placeholder="Search Company...">
+
+<button class="add-btn"
+onclick="addCompany()">
++ Add Company
+</button>
+</div>
+
+</div>
+
+<table class="company-table">
+
+<tr>
+<th>Company</th>
+<th>Role</th>
+<th>Package</th>
+<th>Vacancies</th>
+<th>Work Type</th>
+<th>CGPA</th>
+<th>Location</th>
+<th>HR Contact</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+
+<tr>
+<td>TCS</td>
+<td>Software Engineer</td>
+<td>4.5 LPA</td>
+<td>50</td>
+<td><span class="status fulltime">Full Time</span></td>
+<td>6.5</td>
+<td>Chennai</td>
+<td>9876543210</td>
+<td><span class="status open">Open</span></td>
+<td>
+
+<button class="action-btn view"
+onclick="viewCompany('TCS','Software Engineer','4.5 LPA','50')">
+View
+</button>
+
+<button class="action-btn edit"
+onclick="editCompany('TCS')">
+Edit
+</button>
+
+<button class="action-btn delete"
+onclick="deleteCompany('TCS')">
+Delete
+</button>
+
+</td>
+</tr>
+
+<tr>
+<td>Infosys</td>
+<td>System Engineer</td>
+<td>5 LPA</td>
+<td>40</td>
+<td><span class="status hybrid">Hybrid</span></td>
+<td>7.0</td>
+<td>Bangalore</td>
+<td>9876543211</td>
+<td><span class="status open">Open</span></td>
+<td>
+
+<button class="action-btn view"
+onclick="viewCompany('Infosys','System Engineer','5 LPA','40')">
+View
+</button>
+
+<button class="action-btn edit"
+onclick="editCompany('Infosys')">
+Edit
+</button>
+
+<button class="action-btn delete"
+onclick="deleteCompany('Infosys')">
+Delete
+</button>
+
+</td>
+</tr>
+
+<tr>
+<td>Zoho</td>
+<td>Full Stack Developer</td>
+<td>8 LPA</td>
+<td>20</td>
+<td><span class="status remote">Remote</span></td>
+<td>7.5</td>
+<td>Chennai</td>
+<td>9876543212</td>
+<td><span class="status open">Open</span></td>
+<td>
+
+<button class="action-btn view"
+onclick="viewCompany('Zoho','Full Stack Developer','8 LPA','20')">
+View
+</button>
+
+<button class="action-btn edit"
+onclick="editCompany('Zoho')">
+Edit
+</button>
+
+<button class="action-btn delete"
+onclick="deleteCompany('Zoho')">
+Delete
+</button>
+</tr>
+
+<tr>
+<td>Accenture</td>
+<td>Associate Engineer</td>
+<td>6 LPA</td>
+<td>35</td>
+<td><span class="status fulltime">Full Time</span></td>
+<td>7.0</td>
+<td>Hyderabad</td>
+<td>9876543213</td>
+<td><span class="status closed">Closed</span></td>
+<td>
+
+<button class="action-btn view"
+onclick="viewCompany('Accenture','Associate Engineer','6 LPA','35')">
+View
+</button>
+
+<button class="action-btn edit"
+onclick="editCompany('Accenture')">
+Edit
+</button>
+
+<button class="action-btn delete"
+onclick="deleteCompany('Accenture')">
+Delete
+</button>
+</tr>
+
+<tr>
+<td>Wipro</td>
+<td>Project Engineer</td>
+<td>4.2 LPA</td>
+<td>30</td>
+<td><span class="status hybrid">Hybrid</span></td>
+<td>6.5</td>
+<td>Coimbatore</td>
+<td>9876543214</td>
+<td><span class="status open">Open</span></td>
+<td>
+
+<button class="action-btn view"
+onclick="viewCompany('Wipro','Project Engineer','4.2 LPA','30')">
+View
+</button>
+
+<button class="action-btn edit"
+onclick="editCompany('Wipro')">
+Edit
+</button>
+
+<button class="action-btn delete"
+onclick="deleteCompany('Wipro')">
+Delete
+</button>
+
+</td>
+</tr>
+
+<tr>
+<td>HCL</td>
+<td>Graduate Engineer</td>
+<td>4.8 LPA</td>
+<td>25</td>
+<td><span class="status fulltime">Full Time</span></td>
+<td>6.0</td>
+<td>Madurai</td>
+<td>9876543215</td>
+<td><span class="status open">Open</span></td>
+<td>
+
+<button class="action-btn view"
+onclick="viewCompany('HCL','Graduate Engineer','4.8 LPA','25')">
+View
+</button>
+
+<button class="action-btn edit"
+onclick="editCompany('HCL')">
+Edit
+</button>
+
+<button class="action-btn delete"
+onclick="deleteCompany('HCL')">
+Delete
+</button>
+
+</td>
+</tr>
+
+<tr>
+<td>Cognizant</td>
+<td>Programmer Analyst</td>
+<td>5.5 LPA</td>
+<td>45</td>
+<td><span class="status remote">Remote</span></td>
+<td>7.0</td>
+<td>Chennai</td>
+<td>9876543216</td>
+<td><span class="status open">Open</span></td>
+<td>
+
+<button class="action-btn view"
+onclick="viewCompany('Cognizant','Programmer Analyst','5.5 LPA','45')">
+View
+</button>
+
+<button class="action-btn edit"
+onclick="editCompany('Cognizant')">
+Edit
+</button>
+
+<button class="action-btn delete"
+onclick="deleteCompany('Cognizant')">
+Delete
+</button>
+
+</td>
+</tr>
+
+</table>
+<script>
+
+function viewCompany(company, role, packagee, vacancy){
+
+alert(
+"Company : " + company +
+"\nRole : " + role +
+"\nPackage : " + packagee +
+"\nVacancy : " + vacancy
+);
+
+}
+
+function editCompany(company){
+
+let newName = prompt(
+"Edit Company Name:",
+company
+);
+
+if(newName != null){
+alert("Updated To : " + newName);
+}
+
+}
+
+function deleteCompany(company){
+
+let result = confirm(
+"Delete " + company + " ?"
+);
+
+if(result){
+alert(company + " deleted successfully");
+}
+
+}
+
+function searchCompany(){
+
+let input =
+document.getElementById("searchCompany");
+
+let filter =
+input.value.toUpperCase();
+
+let table =
+document.querySelector(".company-table");
+
+let tr =
+table.getElementsByTagName("tr");
+
+for(let i=1;i<tr.length;i++){
+
+let td =
+tr[i].getElementsByTagName("td")[0];
+
+if(td){
+
+let txtValue =
+td.textContent || td.innerText;
+
+if(txtValue.toUpperCase().indexOf(filter) > -1){
+tr[i].style.display="";
+}
+else{
+tr[i].style.display="none";
+}
+
+}
+
+}
+
+}
+
+function addCompany(){
+
+let company = prompt("Enter Company Name");
+
+if(company == null || company == ""){
+return;
+}
+
+let table = document.querySelector(".company-table");
+
+let row = table.insertRow(-1);
+
+row.innerHTML = `
+<td>${company}</td>
+<td>Software Engineer</td>
+<td>5 LPA</td>
+<td>20</td>
+<td><span class="status fulltime">Full Time</span></td>
+<td>6.5</td>
+<td>Chennai</td>
+<td>9876543210</td>
+<td><span class="status open">Open</span></td>
+<td>
+<button class="action-btn view"
+onclick="viewCompany('${company}','Software Engineer','5 LPA','20')">
+View
+</button>
+
+<button class="action-btn edit"
+onclick="editCompany('${company}')">
+Edit
+</button>
+
+<button class="action-btn delete"
+onclick="deleteCompany('${company}')">
+Delete
+</button>
+</td>
+`;
+
+}
+
+</script>
+
+</body>
+</html>

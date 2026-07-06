@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Management</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+padding:30px;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.search{
+padding:12px;
+width:300px;
+border:none;
+border-radius:10px;
+}
+
+.add-btn{
+padding:12px 20px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+.student-table{
+width:100%;
+border-collapse:collapse;
+background:#1e293b;
+border-radius:15px;
+overflow:hidden;
+}
+
+.student-table th{
+background:#2563eb;
+padding:15px;
+}
+
+.student-table td{
+padding:15px;
+text-align:center;
+border-bottom:1px solid #334155;
+}
+
+.status{
+padding:6px 12px;
+border-radius:20px;
+font-size:14px;
+}
+
+.placed{
+background:#10b981;
+}
+
+.pending{
+background:#f59e0b;
+}
+
+.action-btn{
+padding:8px 12px;
+border:none;
+border-radius:8px;
+margin:2px;
+cursor:pointer;
+}
+
+.edit{
+background:#3b82f6;
+color:white;
+}
+.view{
+background:#10b981;
+color:white;
+}
+.delete{
+background:#ef4444;
+color:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>👨‍🎓 Student Management</h1>
+
+<div>
+<input type="text"
+class="search"
+id="searchInput"
+onkeyup="searchStudent()"
+placeholder="Search Student...">
+<button class="add-btn" onclick="addStudent()">
++ Add Student
+</button>
+</div>
+
+</div>
+
+<table class="student-table" id="studentTable">
+<tr>
+<th>Photo</th>
+<th>Reg No</th>
+<th>Name</th>
+<th>Department</th>
+<th>CGPA</th>
+<th>Skills</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+
+
+<tr>
+<td>👤</td>
+<td>22CSE001</td>
+<td>John</td>
+<td>CSE</td>
+<td>8.5</td>
+<td>Java, SQL</td>
+<td><span class="status placed">Placed</span></td>
+<td>
+
+<button class="action-btn view"
+onclick="viewStudent('John','22CSE001','CSE','8.5','Java, SQL')">
+View
+</button>
+
+<button class="action-btn edit"
+onclick="editStudent('John')">
+Edit
+</button>
+
+<button class="action-btn delete"
+onclick="deleteStudent('John')">
+Delete
+</button>
+
+</td>
+</tr>
+
+<tr>
+<td>👤</td>
+<td>22CSE002</td>
+<td>Priya</td>
+<td>IT</td>
+<td>8.8</td>
+<td>Python, React</td>
+<td><span class="status pending">Pending</span></td>
+<td>
+<button class="action-btn view"
+onclick="viewStudent('Priya','22CSE002','IT','8.8','Python, React')">
+View
+</button>
+
+<button class="action-btn edit"
+onclick="editStudent('Priya')">
+Edit
+</button>
+
+<button class="action-btn delete"
+onclick="deleteStudent('Priya')">
+Delete
+</button>
+</td>
+</tr>
+
+<tr>
+<td>👤</td>
+<td>22CSE003</td>
+<td>Arun</td>
+<td>CSE</td>
+<td>8.1</td>
+<td>JavaScript, NodeJS</td>
+<td><span class="status placed">Placed</span></td>
+<td>
+<button class="action-btn view"
+onclick="viewStudent('Arun','22CSE003','CSE','8.1','JavaScript, NodeJS')">
+View
+</button>
+
+<button class="action-btn edit"
+onclick="editStudent('Arun')">
+Edit
+</button>
+
+<button class="action-btn delete"
+onclick="deleteStudent('Arun')">
+Delete
+</button>
+</td>
+</tr>
+
+<tr>
+<td>👤</td>
+<td>22CSE004</td>
+<td>Divya</td>
+<td>ECE</td>
+<td>8.7</td>
+<td>Python, AI</td>
+<td><span class="status pending">Pending</span></td>
+<td>
+<button class="action-btn view"
+onclick="viewStudent('Divya','22CSE004','ECE','8.7','Python, AI')">
+View
+</button>
+
+<button class="action-btn edit"
+onclick="editStudent('Divya')">
+Edit
+</button>
+
+<button class="action-btn delete"
+onclick="deleteStudent('Divya')">
+Delete
+</button>
+</td>
+</tr>
+
+<tr>
+<td>👤</td>
+<td>22CSE005</td>
+<td>Karthik</td>
+<td>IT</td>
+<td>8.3</td>
+<td>React, MongoDB</td>
+<td><span class="status placed">Placed</span></td>
+<td>
+<button class="action-btn view"
+onclick="viewStudent('Karthik','22CSE005','IT','8.3','React, MongoDB')">
+View
+</button>
+
+<button class="action-btn edit"
+onclick="editStudent('Karthik')">
+Edit
+</button>
+
+<button class="action-btn delete"
+onclick="deleteStudent('Karthik')">
+Delete
+</button>
+</td>
+</tr>
+
+<tr>
+<td>👤</td>
+<td>22CSE006</td>
+<td>Sneha</td>
+<td>CSE</td>
+<td>9.0</td>
+<td>Java, Spring Boot</td>
+<td><span class="status placed">Placed</span></td>
+<td>
+<button class="action-btn view"
+onclick="viewStudent('Sneha','22CSE006','CSE','9.0','Java, Spring Boot')">
+View
+</button>
+
+<button class="action-btn edit"
+onclick="editStudent('Sneha')">
+Edit
+</button>
+
+<button class="action-btn delete"
+onclick="deleteStudent('Sneha')">
+Delete
+</button>
+</td>
+</tr>
+
+
+<tr>
+<td>👤</td>
+<td>22CSE007</td>
+<td>Vignesh</td>
+<td>AIML</td>
+<td>8.6</td>
+<td>Machine Learning, Python</td>
+<td><span class="status pending">Pending</span></td>
+<td>
+<button class="action-btn view"
+onclick="viewStudent('Vignesh','22CSE007','AIML','8.6','Machine Learning, Python')">
+View
+</button>
+
+<button class="action-btn edit"
+onclick="editStudent('Vignesh')">
+Edit
+</button>
+
+<button class="action-btn delete"
+onclick="deleteStudent('Vignesh')">
+Delete
+</button>
+</td>
+</tr>
+</table>
+
+<script>
+
+function viewStudent(name, regno, dept, cgpa, skills){
+
+alert(
+"Student Details\n\n" +
+"Name : " + name +
+"\nRegister No : " + regno +
+"\nDepartment : " + dept +
+"\nCGPA : " + cgpa +
+"\nSkills : " + skills
+);
+
+}
+
+function editStudent(name){
+
+let newName = prompt(
+"Edit Student Name:",
+name
+);
+
+if(newName != null){
+alert("Student Name Updated To : " + newName);
+}
+
+}
+
+function deleteStudent(name){
+
+let result = confirm(
+"Are you sure you want to delete " + name + " ?"
+);
+
+if(result){
+alert(name + " deleted successfully");
+}
+
+}
+
+function searchStudent(){
+
+let input = document.getElementById("searchInput");
+let filter = input.value.toUpperCase();
+
+let table = document.getElementById("studentTable");
+let tr = table.getElementsByTagName("tr");
+
+for(let i = 1; i < tr.length; i++){
+
+let td = tr[i].getElementsByTagName("td")[2];
+
+if(td){
+
+let txtValue = td.textContent || td.innerText;
+
+if(txtValue.toUpperCase().indexOf(filter) > -1){
+tr[i].style.display = "";
+}
+else{
+tr[i].style.display = "none";
+}
+
+}
+
+}
+
+}
+
+function addStudent(){
+
+let name = prompt("Enter Student Name");
+
+if(name != null && name != ""){
+
+alert(
+"Student Added Successfully : " + name
+);
+
+}
+
+}
+
+</script>
